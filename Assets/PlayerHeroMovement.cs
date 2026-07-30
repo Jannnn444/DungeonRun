@@ -4,6 +4,7 @@ public class PlayerHeroMovement : MonoBehaviour
 {
     Rigidbody2D rb;
     public float speed = 5f;
+    public float jump = 5f;
     float movement;
     void Start()
     {
@@ -24,6 +25,10 @@ public class PlayerHeroMovement : MonoBehaviour
             movement = 0f;
         }
         rb.linearVelocityX = movement;
+        if (Input.GetKey(KeyCode.Space))
+        {
+            rb.linearVelocity = new Vector2(movement, jump); 
+        }
     }
 }
 
