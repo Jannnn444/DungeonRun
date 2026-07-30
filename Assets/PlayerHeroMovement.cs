@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlayerHeroMovement : MonoBehaviour
 {
     Rigidbody2D rb;
+    public float speed = 5f;
+    float movement;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -12,12 +14,16 @@ public class PlayerHeroMovement : MonoBehaviour
     void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.RightArrow)) {
-            rb.linearVelocityX = 5f;
+            // rb.linearVelocityX = 5f;
+            movement = speed;
         } else if (Input.GetKey(KeyCode.LeftArrow)) {
-            rb.linearVelocityX = -5f;
+            // rb.linearVelocityX = -5f;
+            movement = -speed;
         } else {
-            rb.linearVelocityX = 0f;
+            // rb.linearVelocityX = 0f;
+            movement = 0f;
         }
+        rb.linearVelocityX = movement;
     }
 }
 
