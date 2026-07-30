@@ -48,7 +48,7 @@ public class PlayerHeroMovement : MonoBehaviour
             movement = 0f;
         }
         rb.linearVelocityX = movement;
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && isGrounded == true)
         {
             rb.linearVelocity = new Vector2(movement, jump); 
         }
