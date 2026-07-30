@@ -6,10 +6,33 @@ public class PlayerHeroMovement : MonoBehaviour
     public float speed = 5f;
     public float jump = 5f;
     float movement;
+    bool isGrounded = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Ground"))
+        {
+            isGrounded = true;
+            Debug.Log("碰到地面了");
+
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Ground"))
+        {
+            isGrounded = false;
+            Debug.Log("離開地面了");
+
+        }
+    }
+
 
     // Update is called once per frame
     void FixedUpdate()
