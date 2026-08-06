@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerHeroMovement : MonoBehaviour
 {
@@ -8,11 +9,13 @@ public class PlayerHeroMovement : MonoBehaviour
     public float jump = 5f;
     float movement;
     bool isGrounded = false;
+    SpriteRenderer spr;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        spr = GetComponent<SpriteRenderer>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -44,10 +47,12 @@ public class PlayerHeroMovement : MonoBehaviour
             // rb.linearVelocityX = 5f;
             movement = speed;
             anim.SetBool("run", true);
+            spr.flipX = false;
         } else if (Input.GetKey(KeyCode.LeftArrow)) {
             // rb.linearVelocityX = -5f;
             movement = -speed;
             anim.SetBool("run", true);
+            spr.flipX = true; 
         } else {
             // rb.linearVelocityX = 0f;
             movement = 0f;
