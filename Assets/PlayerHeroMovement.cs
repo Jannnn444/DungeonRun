@@ -25,6 +25,7 @@ public class PlayerHeroMovement : MonoBehaviour
             isGrounded = true;
             Debug.Log("碰到地面了");
             anim.SetBool("jump", false);
+            transform.SetParent(other.transform);
 
         }
     }
@@ -35,7 +36,7 @@ public class PlayerHeroMovement : MonoBehaviour
         {
             isGrounded = false;
             Debug.Log("離開地面了");
-
+            transform.SetParent(null);
         }
     }
 
